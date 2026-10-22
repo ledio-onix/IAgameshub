@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <h1>Snake</h1>
+
+      <div class="hud">
+        <div class="score-box">
+          <span>Pontos</span>
+          <strong id="score">0</strong>
+        </div>
+
+        <div class="score-box">
+          <span>Melhor</span>
+          <strong id="best">0</strong>
+        </div>
+      </div>
+
+      <canvas id="snakeCanvas" width="420" height="420" aria-label="Canvas do jogo Snake"></canvas>
+
+      <div class="controls">
+        <div class="controls-text">
+          <p>Setas ou WASD</p>
+        </div>
+
+        <div class="buttons">
+          <button id="startBtn" type="button">Iniciar</button>
+          <button id="resetBtn" type="button" class="secondary">Reiniciar</button>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

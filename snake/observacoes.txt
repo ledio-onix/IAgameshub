@@ -1,0 +1,207 @@
+const canvas = document.getElementById('snakeCanvas');
+const ctx = canvas.getContext('2d');
+
+const scoreEl = document.getElementById('score');
+const bestEl = document.getElementById('best');
+const startBtn = document.getElementById('startBtn');
+const resetBtn = document.getElementById('resetBtn');
+
+const gridSize = 20;
+const tileSize = canvas.width / gridSize;
+
+const state = {
+  running: false,
+  snake: [],
+  direction: { x: 1, y: 0 },
+  nextDirection: { x: 1, y: 0 },
+  food: { x: 0, y: 0 },
+  score: 0,
+  best: Number(localStorage.getItem('snake-best') || 0),
+  moveInterval: 120,
+  lastTime: 0,
+};
+
+const keyMap = {
+  ArrowUp: { x: 0, y: -1 },
+  ArrowDown: { x: 0, y: 1 },
+  ArrowLeft: { x: -1, y: 0 },
+  ArrowRight: { x: 1, y: 0 },
+  w: { x: 0, y: -1 },
+  s: { x: 0, y: 1 },
+  a: { x: -1, y: 0 },
+  d: { x: 1, y: 0 },
+};
+
+function updateBestDisplay() {
+  bestEl.textContent = String(state.best);
+}
+
+function updateScoreDisplay() {
+  scoreEl.textContent = String(state.score);
+}
+
+function resetSnake() {
+  state.snake = [
+    { x: 10, y: 10 },
+    { x: 9, y: 10 },
+    { x: 8, y: 10 },
+  ];
+  state.direction = { x: 1, y: 0 };
+  state.nextDirection = { x: 1, y: 0 };
+}
+
+function randomFood() {
+  let position;
+
+  do {
+    position = {
+      x: Math.floor(Math.random() * gridSize),
+      y: Math.floor(Math.random() * gridSize),
+    };
+  } while (state.snake.some((segment) => segment.x === position.x && segment.y === position.y));
+
+  state.food = position;
+}
+
+function resetGame() {
+  state.running = false;
+  startBtn.textContent = 'Iniciar';
+  state.score = 0;
+  updateScoreDisplay();
+  resetSnake();
+  randomFood();
+}
+
+function placeFood() {
+  randomFood();
+}
+
+function gameOver() {
+  state.running = false;
+  startBtn.textContent = 'Iniciar';
+
+  if (state.score > state.best) {
+    state.best = state.score;
+    localStorage.setItem('snake-best', String(state.best));
+    updateBestDisplay();
+  }
+}
+
+function tick() {
+  if (!state.running) return;
+
+  state.direction = state.nextDirection;
+
+  const head = { ...state.snake[0] };
+  head.x += state.direction.x;
+  head.y += state.direction.y;
+
+  const collisionWall = head.x < 0 || head.x >= gridSize || head.y < 0 || head.y >= gridSize;
+  const collisionSelf = state.snake.some((segment, index) => {
+    if (index === 0) return false;
+    return segment.x === head.x && segment.y === head.y;
+  });
+
+  if (collisionWall || collisionSelf) {
+    gameOver();
+    return;
+  }
+
+  state.snake.unshift(head);
+
+  const ateFood = head.x === state.food.x && head.y === state.food.y;
+
+  if (ateFood) {
+    state.score += 1;
+    updateScoreDisplay();
+    placeFood();
+  } else {
+    state.snake.pop();
+  }
+}
+
+function drawGrid() {
+  ctx.fillStyle = '#04150d';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.strokeStyle = 'rgba(134, 239, 172, 0.12)';
+  ctx.lineWidth = 1;
+
+  for (let i = 0; i <= gridSize; i += 1) {
+    const pos = i * tileSize;
+    ctx.beginPath();
+    ctx.moveTo(pos, 0);
+    ctx.lineTo(pos, canvas.height);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(0, pos);
+    ctx.lineTo(canvas.width, pos);
+    ctx.stroke();
+  }
+}
+
+function drawFood() {
+  ctx.fillStyle = '#f87171';
+  ctx.fillRect(
+    state.food.x * tileSize + 4,
+    state.food.y * tileSize + 4,
+    tileSize - 8,
+    tileSize - 8
+  );
+}
+
+function drawSnake() {
+  state.snake.forEach((segment, index) => {
+    ctx.fillStyle = index === 0 ? '#4ade80' : '#22c55e';
+    ctx.fillRect(
+      segment.x * tileSize + 1,
+      segment.y * tileSize + 1,
+      tileSize - 2,
+      tileSize - 2
+    );
+  });
+}
+
+function draw() {
+  drawGrid();
+  drawFood();
+  drawSnake();
+}
+
+function update(time) {
+  if (state.running && time - state.lastTime >= state.moveInterval) {
+    state.lastTime = time;
+    tick();
+  }
+
+  draw();
+  requestAnimationFrame(update);
+}
+
+window.addEventListener('keydown', (event) => {
+  const next = keyMap[event.key];
+  if (!next) return;
+
+  event.preventDefault();
+
+  const isOpposite =
+    next.x === -state.direction.x && next.y === -state.direction.y;
+
+  if (!isOpposite) {
+    state.nextDirection = next;
+  }
+});
+
+startBtn.addEventListener('click', () => {
+  state.running = !state.running;
+  startBtn.textContent = state.running ? 'Pausar' : 'Iniciar';
+});
+
+resetBtn.addEventListener('click', () => {
+  resetGame();
+});
+
+updateBestDisplay();
+resetGame();
+requestAnimationFrame(update);
