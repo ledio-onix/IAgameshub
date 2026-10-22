@@ -10,9 +10,6 @@ Bem-vindo ao IAgameshub, um hub de jogos web criados em HTML, CSS e JavaScript. 
 
 ## 🎮 Jogos disponíveis
 
-- Jogo da Velha
-- Jogo da Memória
-- Adivinhe o número
 - Pong clássico
 
 ## ✨ Funcionalidades
@@ -57,9 +54,9 @@ IAgameshub/
 
 ## 🕹️ Como jogar
 
-- Navegue pelos botões do topo para trocar entre os jogos
-- Cada jogo possui sua própria lógica e controles
-- Use o teclado e mouse normalmente no navegador
+- Abra a pasta do jogo desejado
+- baixe ele
+- ou baixe o pack todo
 
 ## 🔮 Próximos passos
 
