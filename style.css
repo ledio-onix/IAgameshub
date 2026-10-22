@@ -1,0 +1,284 @@
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --card-alt: #1f2937;
+  --panel: #0b1120;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --primary: #38bdf8;
+  --primary-dark: #0ea5e9;
+  --accent: #22c55e;
+  --danger: #ef4444;
+  --warning: #fbbf24;
+  --line: rgba(148, 163, 184, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #020817, #111827 35%, #0f172a);
+  color: var(--text);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px 56px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+}
+
+h1, h2, p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.game-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nav-btn,
+.primary-btn,
+.secondary-btn {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.nav-btn {
+  background: rgba(148, 163, 184, 0.08);
+  color: var(--text);
+}
+
+.nav-btn.active,
+.primary-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #06243a;
+  font-weight: 700;
+}
+
+.secondary-btn {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: var(--text);
+}
+
+.game-panel {
+  display: none;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 24px 50px rgba(2, 6, 23, 0.35);
+  padding: 22px;
+}
+
+.active-panel {
+  display: block;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.pong-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.status-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(148, 163, 184, 0.08);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+
+.label {
+  color: var(--muted);
+}
+
+.score-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(100px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.score-box {
+  background: rgba(17, 24, 39, 0.95);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.score-box span {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.score-box strong {
+  font-size: 1.75rem;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(80px, 1fr));
+  gap: 10px;
+  max-width: 420px;
+}
+
+.cell {
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card-alt);
+  color: var(--text);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cell:disabled {
+  cursor: default;
+  opacity: 0.92;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(80px, 1fr));
+  gap: 12px;
+  max-width: 560px;
+}
+
+.memory-card {
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #1d4ed8, #0ea5e9);
+  color: #fff;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.memory-card:hover {
+  transform: translateY(-2px);
+}
+
+.memory-card.revealed {
+  background: rgba(148, 163, 184, 0.08);
+  border-color: rgba(56, 189, 248, 0.6);
+}
+
+.memory-card.matched {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.8);
+  cursor: default;
+}
+
+.guess-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.guess-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.guess-row input {
+  flex: 1;
+  min-width: 180px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text);
+  padding: 12px 14px;
+}
+
+.pong-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0 8px;
+}
+
+#pong-canvas {
+  width: min(100%, 900px);
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: radial-gradient(circle at center, rgba(14, 165, 233, 0.12), rgba(15, 23, 42, 0.95));
+  box-shadow: inset 0 0 24px rgba(56, 189, 248, 0.12);
+}
+
+@media (max-width: 720px) {
+  .topbar,
+  .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .game-nav,
+  .pong-actions {
+    width: 100%;
+  }
+
+  .nav-btn,
+  .secondary-btn,
+  .primary-btn {
+    width: 100%;
+  }
+
+  .guess-row {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IAgameshub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Coleção de jogos</p>
+          <h1>IAgameshub</h1>
+        </div>
+        <nav class="game-nav" aria-label="Navegação dos jogos">
+          <button class="nav-btn active" data-game="velha">Jogo da Velha</button>
+          <button class="nav-btn" data-game="memoria">Memória</button>
+          <button class="nav-btn" data-game="adivinha">Adivinhe</button>
+          <button class="nav-btn" data-game="pong">Pong</button>
+        </nav>
+      </header>
+
+      <main>
+        <section id="velha" class="game-panel active-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Clássico</p>
+              <h2>Jogo da Velha</h2>
+            </div>
+            <button class="secondary-btn" id="restart-velha">Reiniciar</button>
+          </div>
+
+          <div class="status-box">
+            <span class="label">Status:</span>
+            <strong id="velha-status">Vez do jogador X</strong>
+          </div>
+
+          <div class="score-row" aria-label="Placar do Jogo da Velha">
+            <div class="score-box">
+              <span>Jogador X</span>
+              <strong id="score-x">0</strong>
+            </div>
+            <div class="score-box">
+              <span>Jogador O</span>
+              <strong id="score-o">0</strong>
+            </div>
+          </div>
+
+          <div class="board" id="board" aria-label="Tabuleiro do jogo da velha">
+            <button class="cell" data-index="0" aria-label="Casa 1"></button>
+            <button class="cell" data-index="1" aria-label="Casa 2"></button>
+            <button class="cell" data-index="2" aria-label="Casa 3"></button>
+            <button class="cell" data-index="3" aria-label="Casa 4"></button>
+            <button class="cell" data-index="4" aria-label="Casa 5"></button>
+            <button class="cell" data-index="5" aria-label="Casa 6"></button>
+            <button class="cell" data-index="6" aria-label="Casa 7"></button>
+            <button class="cell" data-index="7" aria-label="Casa 8"></button>
+            <button class="cell" data-index="8" aria-label="Casa 9"></button>
+          </div>
+        </section>
+
+        <section id="memoria" class="game-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Memorização</p>
+              <h2>Jogo da Memória</h2>
+            </div>
+            <button class="secondary-btn" id="restart-memoria">Embaralhar</button>
+          </div>
+
+          <div class="status-box">
+            <span class="label">Movimentos:</span>
+            <strong id="memoria-movimentos">0</strong>
+          </div>
+
+          <div class="memory-grid" id="memory-grid" aria-label="Tabuleiro de memória"></div>
+        </section>
+
+        <section id="adivinha" class="game-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Adivinhação</p>
+              <h2>Descubra o número</h2>
+            </div>
+            <button class="secondary-btn" id="restart-adivinha">Nova rodada</button>
+          </div>
+
+          <div class="guess-box">
+            <label for="guess-input">Digite um número de 1 a 100</label>
+            <div class="guess-row">
+              <input id="guess-input" type="number" min="1" max="100" placeholder="Ex.: 42" />
+              <button class="primary-btn" id="guess-btn">Tentar</button>
+            </div>
+          </div>
+
+          <div class="status-box">
+            <span class="label">Resultado:</span>
+            <strong id="adivinha-status">Aguardando sua primeira tentativa.</strong>
+          </div>
+
+          <div class="score-row">
+            <div class="score-box">
+              <span>Tentativas</span>
+              <strong id="adivinha-tentativas">0</strong>
+            </div>
+            <div class="score-box">
+              <span>Melhor</span>
+              <strong id="adivinha-melhor">—</strong>
+            </div>
+          </div>
+        </section>
+
+        <section id="pong" class="game-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Arcade</p>
+              <h2>Pong Clássico</h2>
+            </div>
+            <div class="pong-actions">
+              <button class="secondary-btn" id="pong-start">Iniciar</button>
+              <button class="secondary-btn" id="pong-reset">Reiniciar</button>
+            </div>
+          </div>
+
+          <div class="status-box">
+            <span class="label">Placar:</span>
+            <strong id="pong-score">0 x 0</strong>
+          </div>
+
+          <div class="pong-wrap">
+            <canvas id="pong-canvas" width="900" height="520" aria-label="Tela do jogo Pong"></canvas>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
