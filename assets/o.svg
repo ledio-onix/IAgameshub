@@ -1,0 +1,11 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">O</title>
+  <desc id="desc">Símbolo O em estilo moderno.</desc>
+  <defs>
+    <linearGradient id="oGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+  </defs>
+  <circle cx="128" cy="128" r="74" fill="none" stroke="url(#oGradient)" stroke-width="22"/>
+</svg>

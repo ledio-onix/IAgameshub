@@ -1,0 +1,13 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">X</title>
+  <desc id="desc">Símbolo X em estilo moderno.</desc>
+  <defs>
+    <linearGradient id="xGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" fill="none"/>
+  <path d="M54 54L202 202" stroke="url(#xGradient)" stroke-width="22" stroke-linecap="round"/>
+  <path d="M202 54L54 202" stroke="url(#xGradient)" stroke-width="22" stroke-linecap="round"/>
+</svg>
