@@ -13,6 +13,7 @@ Bem-vindo ao IAgameshub, um hub de jogos web criados em HTML, CSS e JavaScript. 
 - Pong
 - Snake
 - Breakout
+- jogo da velha
 
 ## ✨ Funcionalidades
 
