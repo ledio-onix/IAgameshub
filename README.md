@@ -10,12 +10,14 @@ Bem-vindo ao IAgameshub, um hub de jogos web criados em HTML, CSS e JavaScript. 
 
 ## 🎮 Jogos disponíveis
 
-- Pong clássico
+- Pong
+- Snake
+- Breakout
 
 ## ✨ Funcionalidades
 
 - Interface moderna e responsiva
-- Jogos independentes em um único hub
+- Jogos independentes em pastas separadas
 - Fácil execução local
 - Estrutura simples para expandir com novos jogos
 - Compatível com navegadores modernos
@@ -25,7 +27,7 @@ Bem-vindo ao IAgameshub, um hub de jogos web criados em HTML, CSS e JavaScript. 
 ### Opção 1: abrir diretamente no navegador
 
 1. Abra o arquivo `index.html` no navegador.
-2. O jogo será carregado automaticamente.
+2. Os jogos podem ser acessados dentro de cada pasta respectiva, como `pong/index.html`, `snake/index.html` e `breakout/index.html`.
 
 ### Opção 2: usar um servidor local
 
@@ -45,38 +47,37 @@ http://localhost:8000
 
 ```text
 IAgameshub/
-├── index.html
-├── style.css
-├── script.js
 ├── README.md
+├── pong/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+├── snake/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+├── breakout/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
 └── assets/   (opcional para futuras imagens, sons ou recursos)
 ```
 
 ## 🕹️ Como jogar
 
-- Abra a pasta do jogo desejado
-- baixe ele
-- ou baixe o pack todo
+- Acesse a pasta do jogo desejado
+- Abra o `index.html` no navegador
+- Use os controles indicados em cada jogo
 
 ## 🔮 Próximos passos
 
-O projeto está pronto para receber mais jogos, como:
+O projeto está pronto para receber mais jogos clássicos, como:
 
-- Snake
-- Breakout
 - Tetris
 - Space Invaders
-- Quiz de perguntas
-- Jogo de cartas
+- Arkanoid
+- Pac-Man
 
 ## 📌 Observações
 
-Este repositório foi criado para servir como base para um pequeno arcade de jogos web, com foco em aprendizado, diversão e evolução contínua.
-
-## 🤝 Contribuições
-
-Contribuições são bem-vindas. Se você quiser adicionar novos jogos, melhorar a interface ou corrigir bugs, sinta-se à vontade para abrir uma pull request.
-
-## 📄 Licença
-
-Este projeto está disponível para uso livre e estudo.
+Todos os jogos seguem a mesma estrutura base: HTML, CSS e JavaScript em pastas separadas.
