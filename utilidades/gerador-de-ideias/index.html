@@ -3,28 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gerador de Ideias</title>
+    <title>Gerador de Ideias de Jogos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main class="app-shell">
-      <header class="topbar">
-        <p class="eyebrow">IAgameshub</p>
-        <h1>Gerador de Ideias</h1>
-      </header>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
 
-      <section class="panel">
-        <div class="field-group">
-          <label for="styleSelect">Estilo do jogo</label>
-          <select id="styleSelect">
-            <option value="2D">2D</option>
-            <option value="3D">3D</option>
-            <option value="2.5D">2.5D</option>
-          </select>
+    <main class="app-shell">
+      <section class="panel controls-panel">
+        <div class="panel-header">
+          <p class="eyebrow">IAgameshub</p>
+          <h1>Gerador de Ideias</h1>
         </div>
 
-        <div class="field-group">
-          <label for="genreSelect">Gênero</label>
+        <div class="section-block">
+          <label class="section-label">Estilo visual</label>
+          <div class="style-select" id="styleSelect">
+            <button class="style-option active" type="button" data-value="2D">2D</button>
+            <button class="style-option" type="button" data-value="3D">3D</button>
+            <button class="style-option" type="button" data-value="2.5D">2.5D</button>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <label for="genreSelect" class="section-label">Gênero</label>
           <select id="genreSelect">
             <option value="Ação">Ação</option>
             <option value="Aventura">Aventura</option>
@@ -40,13 +46,13 @@
           </select>
         </div>
 
-        <div id="genreCustomWrap" class="field-group hidden">
-          <label for="genreCustom">Gênero personalizado</label>
+        <div id="genreCustomWrap" class="section-block hidden">
+          <label for="genreCustom" class="section-label">Gênero personalizado</label>
           <input id="genreCustom" type="text" placeholder="Ex.: Roguelite de sobrevivência" />
         </div>
 
-        <div class="field-group">
-          <label for="topicSelect">Sobre o que é o jogo</label>
+        <div class="section-block">
+          <label for="topicSelect" class="section-label">Tema principal</label>
           <select id="topicSelect">
             <option value="Futurismo urbano com robôs">Futurismo urbano com robôs</option>
             <option value="Piratas em um mundo submerso">Piratas em um mundo submerso</option>
@@ -57,21 +63,26 @@
           </select>
         </div>
 
-        <div id="topicCustomWrap" class="field-group hidden">
-          <label for="topicCustom">Tema personalizado</label>
-          <input id="topicCustom" type="text" placeholder="Ex.: uma cidade flutuante em constante tempestade" />
+        <div id="topicCustomWrap" class="section-block hidden">
+          <label for="topicCustom" class="section-label">Tema personalizado</label>
+          <input id="topicCustom" type="text" placeholder="Ex.: uma cidade flutuante em disputa" />
         </div>
 
         <div class="actions">
-          <button id="generateBtn" type="button">Gerar</button>
-          <button id="copyBtn" type="button" class="secondary">Copiar prompt</button>
+          <button id="generateBtn" class="primary-btn" type="button">Gerar prompt</button>
+          <button id="copyBtn" class="ghost-btn" type="button">Copiar</button>
         </div>
       </section>
 
-      <section class="output-panel">
-        <div class="output-header">
-          <h2>Prompt gerado</h2>
+      <section class="panel output-panel">
+        <div class="output-head">
+          <div>
+            <p class="eyebrow muted">Prompt pronto</p>
+            <h2>Ideia de jogo</h2>
+          </div>
+          <span id="badge" class="badge">Novo</span>
         </div>
+
         <textarea id="output" readonly aria-label="Prompt gerado"></textarea>
       </section>
     </main>
