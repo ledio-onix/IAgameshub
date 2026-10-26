@@ -1,0 +1,22 @@
+const canvas = document.getElementById('snakeCanvas');
+const ctx = canvas.getContext('2d');
+
+const scoreEl = document.getElementById('score');
+const bestEl = document.getElementById('best');
+const startBtn = document.getElementById('startBtn');
+const resetBtn = document.getElementById('resetBtn');
+
+const gridSize = 20;
+const tileSize = canvas.width / gridSize;
+
+const state = {
+  running: false,
+  snake: [],
+  direction: { x: 1, y: 0 },
+  nextDirection: { x: 1, y: 0 },
+  food: { x: 0, y: 0 },
+  score: 0,
+  best: Number(localStorage.getItem('snake-best') || 0),
+  moveInterval: 120,
+  lastTime: 0,
+};
