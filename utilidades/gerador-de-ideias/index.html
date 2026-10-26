@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de Ideias</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <p class="eyebrow">IAgameshub</p>
+        <h1>Gerador de Ideias</h1>
+      </header>
+
+      <section class="panel">
+        <div class="field-group">
+          <label for="styleSelect">Estilo do jogo</label>
+          <select id="styleSelect">
+            <option value="2D">2D</option>
+            <option value="3D">3D</option>
+            <option value="2.5D">2.5D</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="genreSelect">Gênero</label>
+          <select id="genreSelect">
+            <option value="Ação">Ação</option>
+            <option value="Aventura">Aventura</option>
+            <option value="RPG">RPG</option>
+            <option value="Estratégia">Estratégia</option>
+            <option value="Puzzle">Puzzle</option>
+            <option value="Plataforma">Plataforma</option>
+            <option value="Tiro">Tiro</option>
+            <option value="Simulação">Simulação</option>
+            <option value="Horror">Horror</option>
+            <option value="Casual">Casual</option>
+            <option value="Personalizado">Personalizado</option>
+          </select>
+        </div>
+
+        <div id="genreCustomWrap" class="field-group hidden">
+          <label for="genreCustom">Gênero personalizado</label>
+          <input id="genreCustom" type="text" placeholder="Ex.: Roguelite de sobrevivência" />
+        </div>
+
+        <div class="field-group">
+          <label for="topicSelect">Sobre o que é o jogo</label>
+          <select id="topicSelect">
+            <option value="Futurismo urbano com robôs">Futurismo urbano com robôs</option>
+            <option value="Piratas em um mundo submerso">Piratas em um mundo submerso</option>
+            <option value="Magia e criaturas ancestrais">Magia e criaturas ancestrais</option>
+            <option value="Exploração espacial em planetas desconhecidos">Exploração espacial em planetas desconhecidos</option>
+            <option value="Sobrevivência em uma floresta encantada">Sobrevivência em uma floresta encantada</option>
+            <option value="Personalizado">Personalizado</option>
+          </select>
+        </div>
+
+        <div id="topicCustomWrap" class="field-group hidden">
+          <label for="topicCustom">Tema personalizado</label>
+          <input id="topicCustom" type="text" placeholder="Ex.: uma cidade flutuante em constante tempestade" />
+        </div>
+
+        <div class="actions">
+          <button id="generateBtn" type="button">Gerar</button>
+          <button id="copyBtn" type="button" class="secondary">Copiar prompt</button>
+        </div>
+      </section>
+
+      <section class="output-panel">
+        <div class="output-header">
+          <h2>Prompt gerado</h2>
+        </div>
+        <textarea id="output" readonly aria-label="Prompt gerado"></textarea>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
