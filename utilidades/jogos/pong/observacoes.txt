@@ -1,0 +1,32 @@
+const canvas = document.getElementById('pongCanvas');
+const ctx = canvas.getContext('2d');
+
+const scoreLeftEl = document.getElementById('score-left');
+const scoreRightEl = document.getElementById('score-right');
+const startBtn = document.getElementById('startBtn');
+const resetBtn = document.getElementById('resetBtn');
+
+const game = {
+  running: false,
+  speed: 7,
+  paddleWidth: 14,
+  paddleHeight: 90,
+  leftY: (canvas.height - 90) / 2,
+  rightY: (canvas.height - 90) / 2,
+  leftScore: 0,
+  rightScore: 0,
+  ball: {
+    x: canvas.width / 2,
+    y: canvas.height / 2,
+    radius: 10,
+    speedX: 5,
+    speedY: 4,
+  },
+};
+
+const keys = {
+  w: false,
+  s: false,
+  ArrowUp: false,
+  ArrowDown: false,
+};
